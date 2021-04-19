@@ -1,0 +1,32 @@
+<head>
+    <h1> Event Created </h1>
+</head>
+
+<div>
+    <h2>Event Name</h2>
+    <p><%= @event.name %><p>
+    
+    <h3>Event Date</h3>
+    <p><%= @event.event_date %><p>
+    
+    <h4>Event Location</h4>
+    <p><%= @event.location %><p>
+
+    <h5> Created by </h5>
+    <p><%= @event.creator.username %><p>
+
+</div>
+
+<div>
+    <h6>People attending this event</h6>
+    <% if @event.attendees.empty? %>
+        <p>no attendees yet<p>
+    <% else %>
+        <% @event.attendees.each do |attendee| %>
+            <p><%= attendee.username %><p>
+        <%end%>
+    <% end %>
+</div>
+
+<%= button_to "Delete Event", event_path(@event), method: :delete %>
+<%= button_to "Back to homepage", root_path, method: :get %>

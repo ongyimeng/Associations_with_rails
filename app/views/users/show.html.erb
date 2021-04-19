@@ -1,0 +1,44 @@
+<head>
+    <h1> Welcome to your profile </h1>
+</head>
+
+<div>
+    <h2>Username</h2>
+    <p><%= @user.username %><p>
+</div>
+
+
+<div>
+    <h3> Events Created By You </h3>
+    <% if @user.created_events.empty? %>
+        <p>no events created<p>
+    <% else %>
+        <% @user.created_events.each do |event| %>
+            <p><%= event.name %><p>
+            <p><%= event.event_date %><p>
+            <p><%= event.location %><p>
+        <%end%>
+    <% end %>
+</div>
+
+<div>
+    
+    <h3> Past Events Attended  </h3>
+    <% if @user.attended_events.where("event_date<?",Date.today).empty? %>
+        <p>No events previously attended<p>
+    <% else %>
+        <% @user.attended_events.where("event_date<?",Date.today).each do |event| %>
+            <p><%= event.name %><p>
+        <%end%>
+    <% end %>
+    <h3> Upcoming Events  </h3>
+    <% if @user.attended_events.where("event_date>=?",Date.today).empty? %>
+        <p>not attending any upcoming events<p>
+    <% else %>
+        <% @user.attended_events.where("event_date>=?",Date.today).each do |event| %>
+            <p><%= event.name %><p>
+            <p><%= event.event_date %><p>
+            <p><%= event.location %><p>
+        <%end%>
+    <% end %>
+</div>

@@ -1,0 +1,17 @@
+<head>
+    <h1> Events To Look Out For </h1>
+</head>
+
+<div>
+    <h2> Events Created </h2>
+    <% if @events.empty? %>
+        <p>no events yet<p>
+    <% else %>
+        <% @events.each do |event| %>
+            <p><%= event.name %><p>
+            <p><%= event.event_date %><p>
+            <p><%= event.location %><p>
+            <%=link_to "See more", event_path(event), class:"nav-link"   %>
+        <% end %>
+    <% end %>
+</div>

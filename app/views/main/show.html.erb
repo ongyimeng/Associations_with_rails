@@ -1,0 +1,21 @@
+
+<%= render "header.html.erb" %>
+
+
+<head>
+    <h1> Welcome to private events </h1>
+</head>
+
+<div>
+    <% if @user %>
+        <h2>Logged in as </h2>
+        <p><%= @user.username %><p>
+    <% else %>
+        <h2>Please log in</h2>
+    <% end %>
+
+</div>
+
+<div>
+    <%= button_to "All Events Available", events_path,method: :get, class:"nav-link" %>
+</div>

@@ -1,0 +1,10 @@
+<% if @user %>
+    <%= button_to "Sign Out", sign_out_path, method: :delete, class:"nav-link" %>
+    <%= button_to "Profile", user_path(@user), method: :get, class:"nav-link" %>
+    <%= button_to "Create Event", new_event_path, method: :get, class:"nav-link" %>
+<%else%>
+    <%= button_to "Sign Up", new_user_path, method: :get, class:"nav-link" %>
+
+    <%= button_to "Sign In", sign_in_path, class:"nav-link" %>
+<%end%>
+
